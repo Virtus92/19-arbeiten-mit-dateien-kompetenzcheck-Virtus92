@@ -11,7 +11,7 @@ Der User soll ein Pokémon auswählen und mithilfe verschiedener Attacken ein ge
 
 #### CSV Einlesen
 
-Importiere die [Pokémon CSV](Pokemon.csv) und [Attack CSV](Attacks.csv) aus dem Kompetenzcenter in dein Projekt.
+Importiere die [Pokémon CSV](Pokemon.csv) und [Attack CSV](Attacks.csv) in dein Projekt.
 Lese die Daten ein und erstelle daraus die notwendigen Klassen.
 Jedes Pokémon soll zwei zufällige Attacken bekommen.
 
@@ -19,7 +19,7 @@ Jedes Pokémon soll zwei zufällige Attacken bekommen.
 
 Der Nutzer kann zu Beginn des Spiels ein Pokémon durch Angabe der Index-Nummer oder dem Namen wählen, dieses wird für den Kampf ausgewählt.
 Gib auf der Konsole aus, um welches Pokémon es sich handelt und welche Werte und mögliche Attacken es hat.
-Das gegnerischen Pokémon wählt der Computer zufällig.
+Das gegnerische Pokémon wählt der Computer zufällig.
 
 #### Kampf
 
@@ -38,7 +38,7 @@ Schaden = (Atk_Pw) * (APk_A / DPk_D) * (1.0/25.0)
 **APk_A** = Attack Wert des angreifenden Pokémon
 **DPk_D** = Defense Wert des verteidigenden Pokémon
 
-Das Pokémon mit dem größeren Speed Wert greift zuerst an. Verliert das angegriffene Pokémon bevor es angegriffen hat, wird der Angriff übersprungen. Wenn die HP eines Pokémon auf 0 fallen, verliert der jeweilige Spieler
+Das Pokémon mit dem größeren Speed Wert greift zuerst an. Verliert das angegriffene Pokémon, bevor es angegriffen hat, wird der Angriff übersprungen. Wenn die HP eines Pokémon auf 0 fallen, verliert der jeweilige Spieler.
 
 #### OPTIONAL Effektivität
 
@@ -50,5 +50,14 @@ Schaden = (Atk_Pw) * (APk_A / DPk_D) * (Lvl / 50) * Rnd * STAB * Eff1 * Eff2
 **Eff2** = Effektivität des Angriffs gegen Typ2 des verteidigenden Pokémon
 
 Nutze die [Effectiveness.csv](Effectiveness.csv) Datei, um die Koeffizienten zu ermitteln. 
+
+### Abnahmekriterien
+
+- Der:die Teilnehmer:in kann aufzählen, welche Klassen vorgestellt wurden, die geeignet sind, um Dateien auszulesen bzw. zu schreiben sind und kann bewerten, welche Klasse für seine Anwendung am besten geeignet ist.
+- Der:die Teilnehmer:in hat sinnvolle Klassen für das Auslesen bzw. Schreiben der Datei angewendet und kann gut begründen, warum diese sinnvoll sind.
+- Das Programm erfüllt die oben angeführten Anforderungen.
+- Das Programm erfüllt die Clean-Code Richtlinien.
+- Die Variablen-/Methoden-/Klassennamen sind aussagekräftig.
+- Der Quellcode ist in GITHub eingecheckt.
 
 Zurück zur [Startseite](README.md)
