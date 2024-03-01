@@ -55,6 +55,7 @@ Nutze die [Effectiveness.csv](Effectiveness.csv) Datei, um die Koeffizienten zu 
 
 - Der:die Teilnehmer:in kann aufzählen, welche Klassen vorgestellt wurden, die geeignet sind, um Dateien auszulesen bzw. zu schreiben sind und kann bewerten, welche Klasse für seine Anwendung am besten geeignet ist.
 - Der:die Teilnehmer:in hat sinnvolle Klassen für das Auslesen bzw. Schreiben der Datei angewendet und kann gut begründen, warum diese sinnvoll sind.
+- Der:die Teilnehmer:in verwendet sinnvolle Objekttypen, SEHR schnell das Pokemon nach ID/Name zu finden.
 - Das Programm erfüllt die oben angeführten Anforderungen.
 - Das Programm erfüllt die Clean-Code Richtlinien.
 - Die Variablen-/Methoden-/Klassennamen sind aussagekräftig.
