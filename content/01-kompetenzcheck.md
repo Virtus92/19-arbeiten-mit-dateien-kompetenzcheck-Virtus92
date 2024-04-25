@@ -11,7 +11,7 @@ Der User soll ein Pokémon auswählen und mithilfe verschiedener Attacken ein ge
 
 #### CSV Einlesen
 
-Importiere die [Pokémon CSV](Pokemon.csv) und [Attack CSV](Attacks.csv) in dein Projekt.
+Importiere die Pokemon.CSV und Attacks.csv in dein Projekt.
 Lese die Daten ein und erstelle daraus die notwendigen Klassen.
 Jedes Pokémon soll zwei zufällige Attacken bekommen.
 
@@ -49,7 +49,7 @@ Schaden = (Atk_Pw) * (APk_A / DPk_D) * (Lvl / 50) * Rnd * STAB * Eff1 * Eff2
 **Eff1** = Effektivität des Angriffs gegen Typ1 des verteidigenden Pokémon
 **Eff2** = Effektivität des Angriffs gegen Typ2 des verteidigenden Pokémon
 
-Nutze die [Effectiveness.csv](Effectiveness.csv) Datei, um die Koeffizienten zu ermitteln. 
+Nutze die Effectiveness.csv Datei, um die Koeffizienten zu ermitteln. 
 
 ### Abnahmekriterien
 
@@ -61,4 +61,4 @@ Nutze die [Effectiveness.csv](Effectiveness.csv) Datei, um die Koeffizienten zu 
 - Die Variablen-/Methoden-/Klassennamen sind aussagekräftig.
 - Der Quellcode ist in GITHub eingecheckt.
 
-Zurück zur [Startseite](README.md)
+Zurück zur [Startseite](../README.md)
