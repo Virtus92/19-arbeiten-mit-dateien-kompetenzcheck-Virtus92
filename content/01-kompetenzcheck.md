@@ -5,7 +5,7 @@
 ### Nutze die CSV-Dateien um ein Pokémon Arena Spiel zu erstellen
 
 Mit den zur Verfügung gestellten Datensätzen soll der Arenakampf von Pokémon nachgebaut werden.
-Der User soll ein Pokémon auswählen und mithilfe verschiedener Attacken ein gegnerisches Pokémon, welches vom Computer gesteuert wird, bekämpfen.
+Der User soll ein Pokémon auswählen und mithilfe verschiedener Attacken ein gegnerisches Pokémon, welches vom Computer gesteuert wird, bekämpfen. Implementiere dein Programm so, dass mehrere Kämpfe (auch mit demselben Pokemon) hintereinander gespielt werden können bzw. beide Pokemons im Kampf gleich sein können! 
 
 ### Requirements
 
