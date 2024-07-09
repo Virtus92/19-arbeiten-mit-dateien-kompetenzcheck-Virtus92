@@ -2,6 +2,8 @@
 
 ## Aufgabe: Pokémon-Spiel
 
+Verwende das MVC-Design Pattern, um ein Pokémon-Spiel zu implementieren!
+
 ### Nutze die CSV-Dateien um ein Pokémon Arena Spiel zu erstellen
 
 Mit den zur Verfügung gestellten Datensätzen soll der Arenakampf von Pokémon nachgebaut werden.
@@ -58,6 +60,7 @@ Nutze die Effectiveness.csv Datei, um die Koeffizienten zu ermitteln.
 - Der:die Teilnehmer:in verwendet sinnvolle Objekttypen, SEHR schnell das Pokemon nach ID/Name zu finden.
 - Das Programm erfüllt die oben angeführten Anforderungen.
 - Das Programm erfüllt die Clean-Code-Richtlinien.
+- Das Programm verwendet das MVC-Design Pattern sinnvoll.
 - Die Variablen-/Methoden-/Klassennamen sind aussagekräftig.
 - Der Quellcode ist in GITHub eingecheckt.
 
