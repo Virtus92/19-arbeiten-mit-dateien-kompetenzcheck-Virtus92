@@ -50,6 +50,8 @@ Schaden = (Atk_Pw) * (APk_A / DPk_D) * (Lvl / 50) * Rnd * STAB * Eff1 * Eff2
 
 **Eff1** = Effektivität des Angriffs gegen Typ1 des verteidigenden Pokémon
 **Eff2** = Effektivität des Angriffs gegen Typ2 des verteidigenden Pokémon
+**Rnd** = Ein Random-Wert zwischen 0,85 und 1,00
+**STAB** = Same Type Attack Bonus von 1,5, wenn der angreifende Pokemon eine Attacke von einem seiner Typen anwendet. Ansonsten ist es 1.
 
 Nutze die Effectiveness.csv Datei, um die Koeffizienten zu ermitteln. 
 
