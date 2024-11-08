@@ -62,7 +62,7 @@ Nutze die Effectiveness.csv Datei, um die Koeffizienten zu ermitteln.
 - Der:die Teilnehmer:in verwendet sinnvolle Objekttypen, SEHR schnell das Pokemon nach ID/Name zu finden.
 - Das Programm erfüllt die oben angeführten Anforderungen.
 - Das Programm erfüllt die Clean-Code-Richtlinien.
-- Das Programm verwendet das MVC-Design Pattern sinnvoll.
+- Das Programm trennt die Klassen in User Interaction/Business Logic/Persistierung.
 - Die Variablen-/Methoden-/Klassennamen sind aussagekräftig.
 - Der Quellcode ist in GITHub eingecheckt.
 
