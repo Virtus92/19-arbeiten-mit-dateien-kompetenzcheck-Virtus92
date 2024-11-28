@@ -2,7 +2,7 @@
 
 ## Aufgabe: Pokémon-Spiel
 
-Verwende das MVC-Design Pattern, um ein Pokémon-Spiel zu implementieren!
+Implementiere ein Pokémon-Spiel! Achte dabei darauf, dass die UI, die Logik und die Persistierung sauber getrennt sind!
 
 ### Nutze die CSV-Dateien um ein Pokémon Arena Spiel zu erstellen
 
