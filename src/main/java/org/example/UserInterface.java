@@ -1,36 +1,26 @@
 package org.example;
-
-import java.io.IOException;
-
-import static org.example.Game.*;
 import static org.example.Main.sc;
 
 public class UserInterface {
 
-    public static void startGame() throws IOException {
+    public static void startGame() {
         System.out.println("""
                 ==========================================
                 \uD83C\uDF1F Willkommen bei Pokémon! \uD83C\uDF1F
                 ==========================================""");
 
         System.out.println("Teile uns deinen Namen mit!");
-        String name = sc.nextLine();
-        PokemonTrainer trainer = new PokemonTrainer(name);
-        System.out.println("Sehr gut " + trainer.trainerName + "!");
-        System.out.println("Nun wähle " + PokemonTrainer.inventar.length + " Pokemon aus, mit denen du kämpfen möchtest");
-        trainer.fillInventar();
     }
 
-    public static void enemyChose() {
+    public static void enemyChose(Pokemon enemy) {
         System.out.println("------------------------------------------\nDein Gegner wählt : " + enemy.getName());
         if (InputHelper.getYesNoInput("Möchtest du mehr infos? ")) {
             System.out.println(enemy);
         }
         enemyAttacks();
-
     }
 
-    static void fightMenu(Pokemon attacker, Pokemon defender, boolean isPlayer) throws IOException {
+    static void fightMenu(Pokemon player, Pokemon enemy) {
         System.out.println("====================================");
         System.out.println("⚔ Kampf beginnt! ⚔");
         System.out.println("====================================");
@@ -42,19 +32,6 @@ public class UserInterface {
         System.out.printf("   %s - ❤️ %d HP\n", enemy.getName(), enemy.getHp());
 
         System.out.println("====================================");
-        int choice = 1;
-        if (isPlayer) {
-            String prompt = "Möchtest du angreifen oder dein Pokemon wechseln? \n   1. Angriff\n   2. Wechsel\n";
-            choice = InputHelper.getIntInput(prompt, 1, 2);
-        }
-
-        if (choice == 2) {
-            trainer.setActivePokemon();
-            System.out.println("Dein Pokemon wurde gewechselt.");
-            attack(enemy, player, false);
-        } else {
-            System.out.printf("%s greift an!\n", attacker.getName());
-        }
     }
 
     public static void enemyAttacks() {
@@ -63,7 +40,7 @@ public class UserInterface {
         sc.nextLine();
     }
 
-    public static String showAttacks() {
+    public static String showAttacks(Pokemon player) {
         System.out.println("\n⚔ Deine Attacken ⚔");
         System.out.println("------------------------------------");
         System.out.printf("   1. %s (Typ: %s, Stärke: %d, Genauigkeit: %d%%)\n",
@@ -81,11 +58,13 @@ public class UserInterface {
         System.out.println("====================================");
         System.out.println("➡ Drücke Enter, um den nächsten Schritt zu sehen!");
         sc.nextLine();
+    }
 
+    public static void enemyAttackMsg(Pokemon attacker) {
+        System.out.printf("%s greift an!\n", attacker.getName());
     }
 
     public static void pokemonEvade(Pokemon defender) {
-
         System.out.println(defender.getName() + " ist ausgewichen!");
     }
 
@@ -128,5 +107,8 @@ public class UserInterface {
         }
     }
 
+    public static void pokeChange() {
+        System.out.println("Dein Pokemon wurde gewechselt.");
+    }
 
 }

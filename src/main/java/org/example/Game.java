@@ -5,31 +5,25 @@ import java.util.Objects;
 
 import static org.example.Effect.getEffectiveness;
 import static org.example.Main.r;
-import static org.example.Pokemon.*;
+import static org.example.Main.sc;
+import static org.example.Pokemon.pokemonMap;
 
 public class Game {
-    protected static PokemonTrainer trainer;
-    protected static Pokemon player;
-    protected static Pokemon enemy;
+    protected PokemonTrainer trainer;
+    protected Pokemon player;
+    protected Pokemon enemy;
 
-    public static void buildGame() throws IOException {
-        Attack.initAttacks();
-        Effect.initEffects();
-        initPokemon();
+    public void buildGame() throws IOException {
         if (trainer == null) {
-            UserInterface.startGame();
+            initialise();
+            setPlayer();
         }
-        setupGame();
-        startGame();
-    }
+        if( enemy == null || !enemy.isAlive()) {
+            enemyChosePokemon();
+        }
 
-    public static void setupGame() {
-        enemy = pokemonMap.get(r.nextInt(0, 151));
-        UserInterface.enemyChose();
-    }
-
-    public static void startGame() throws IOException {
         boolean isPlayer = player.getSpeed() > enemy.getSpeed();
+
         while (player.isAlive() && enemy.isAlive()) {
             if (player.getSpeed() > enemy.getSpeed()) {
                 attack(player, enemy, true);
@@ -38,6 +32,7 @@ public class Game {
             }
             isPlayer = !isPlayer;
         }
+
         if (!enemy.isAlive() || !player.isAlive()) {
             UserInterface.displayBattleResult(player, enemy);
             if (!enemy.isAlive()) {
@@ -48,11 +43,37 @@ public class Game {
         }
     }
 
+    public void setPlayer() throws IOException {
+        UserInterface.startGame();
+        String name = sc.nextLine();
+        trainer = new PokemonTrainer(name);
+        fillInventar();
+    }
 
+    public void initialise() throws IOException {
+        Attack.initAttacks();
+        Effect.initEffects();
+        Pokemon.initPokemon();
+    }
 
-    static void attack(Pokemon attacker, Pokemon defender, boolean isPlayer) throws IOException {
+    public void enemyChosePokemon() {
+        enemy = pokemonMap.get(r.nextInt(0, 151));
+        UserInterface.enemyChose(enemy);
+    }
+
+    public void attack(Pokemon attacker, Pokemon defender, boolean isPlayer) throws IOException {
         if (isPlayer) {
-            UserInterface.fightMenu(attacker, defender, isPlayer);
+            UserInterface.fightMenu(player, enemy);
+            String prompt = "Möchtest du angreifen oder dein Pokemon wechseln? \n   1. Angriff\n   2. Wechsel\n";
+            int choice = InputHelper.getIntInput(prompt, 1, 2);
+
+            if (choice == 2) {
+                setActivePokemon();
+                UserInterface.pokeChange();
+                attack(enemy, player, false);
+            } else {
+                UserInterface.enemyAttackMsg(attacker);
+            }
         } else {
             UserInterface.enemyAttacks();
         }
@@ -75,6 +96,7 @@ public class Game {
         }
 
         if (defender.getHp() <= 0) {
+            UserInterface.pokemonDied(defender);
             UserInterface.displayBattleResult(player, enemy);
             wantsToPlayAgain();
             return;
@@ -89,23 +111,23 @@ public class Game {
         }
     }
 
-    public static int playerAttack() {
-        String prompt = UserInterface.showAttacks();
+    public int playerAttack() {
+        String prompt = UserInterface.showAttacks(player);
         return InputHelper.getIntInput(prompt, 1, 2);
     }
 
 
-    static void wantsToPlayAgain() throws IOException {
-            if (enemy.getHp() <= 0) {
-                player.increaseLevel();
-                setupGame();
-                startGame();
-                return;
-            } else {
+    public void wantsToPlayAgain() throws IOException {
+        if (enemy.getHp() <= 0) {
+            player.increaseLevel();
+            enemyChosePokemon();
+            buildGame();
+            return;
+        } else {
             player.unalive();
             if (areAnyPokemonAlive()) {
-                trainer.setActivePokemon();
-                startGame();
+                setActivePokemon();
+                buildGame();
                 return;
             }
         }
@@ -119,8 +141,61 @@ public class Game {
         }
     }
 
-    private static boolean areAnyPokemonAlive() {
-        for (Pokemon pokemon : PokemonTrainer.inventar) {
+
+
+    public void setActivePokemon() throws IOException {
+        while (true) {
+            int x = 1;
+            int deadCount = 0;
+            System.out.println();
+            for (Pokemon pokemon : trainer.inventar) {
+                UserInterface.listPokemon(x, pokemon);
+                x++;
+                if (!pokemon.isAlive()) {
+                    deadCount++;
+                }
+            }
+            if(deadCount==trainer.inventar.length) {
+                wantsToPlayAgain();
+            }
+            int temp = UserInterface.chooseActivePokemon(trainer.inventar);
+            if (trainer.inventar[temp-1].isAlive()) {
+                trainer.activePokemon = trainer.inventar[temp-1];
+                player = trainer.activePokemon;
+                break;
+            } else {
+                UserInterface.errorDead();
+            }
+        }
+    }
+
+
+    public void fillInventar() throws IOException {
+        System.out.println("Nun wähle " + trainer.inventar.length + " Pokemon aus, mit denen du kämpfen möchtest");
+//        for (int i = 0; i < inventar.length; i++) {
+//            System.out.println("Welchen Typ soll dein " + (i+1) + ". Pokemon haben? (Fire, Grass, Water, etc.)");
+//            String type = sc.nextLine();
+//            List<String> list = getPokemonByType(type);
+//            System.out.println(list);
+//
+//            System.out.println("Wähle nun mithilfe der ID welches Pokemon du hinzufügen möchtest");
+//            int choice = sc.nextInt();
+//            inventar[i] = pokemonMap.get(choice-1).clone();
+//            sc.nextLine();
+//
+//            System.out.println("Du wählst: " + inventar[i] + "\n Drücke enter um weiterzumachen.");
+//            sc.nextLine();
+//        }
+        trainer.inventar[0] = pokemonMap.get(150);
+        trainer.inventar[1] = pokemonMap.get(140);
+        trainer.inventar[2] = pokemonMap.get(130);
+        setActivePokemon();
+    }
+
+
+
+    private boolean areAnyPokemonAlive() {
+        for (Pokemon pokemon : trainer.inventar) {
             if (pokemon.isAlive()) {
                 return true;
             }

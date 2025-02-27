@@ -8,6 +8,7 @@ public class Main {
     public static Random r = new Random();
     public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) throws IOException {
-        Game.buildGame();
+        Game game = new Game();
+        game.buildGame();
     }
 }

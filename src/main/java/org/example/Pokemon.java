@@ -58,7 +58,7 @@ public class Pokemon {
         }
     }
 
-    public static List<String> getPokemonByType(String type) {
+    public List<String> getPokemonByType(String type) {
         List<String> tempList = new ArrayList<>();
         for (int i =0; i<pokemonMap.size(); i++){
             Pokemon tempPokemon = pokemonMap.get(i);
@@ -124,6 +124,10 @@ public class Pokemon {
 
     public void unalive() {
         isAlive = false;
+    }
+
+    public Pokemon clone() {
+        return new Pokemon(this.id, this.name, this.type1, this.type2, this.total, this.hp, this.attack, this.attack2, this.defense, this.speed);
     }
 
     @Override
